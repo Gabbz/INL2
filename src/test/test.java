@@ -10,6 +10,7 @@ public class test {
 		
 		ArrayList<Integer> userInput = new ArrayList<>();
 		System.out.println("Mata in 3x3 siffror:");
+		System.out.println("Bög");
 		Scanner kbd = new Scanner(System.in);
 		for (int i = 0; i < 9; i++) {
 			userInput.add(kbd.nextInt());
