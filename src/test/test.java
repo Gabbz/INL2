@@ -10,8 +10,12 @@ public class test {
 		
 		ArrayList<Integer> userInput = new ArrayList<>();
 		System.out.println("Mata in 3x3 siffror:");
+<<<<<<< HEAD
 		System.out.println("Bög");
 		System.out.println("pullat");
+=======
+		System.out.println("Bögeri");
+>>>>>>> branch 'master' of https://github.com/Gabbz/INL2.git
 		Scanner kbd = new Scanner(System.in);
 		for (int i = 0; i < 9; i++) {
 			userInput.add(kbd.nextInt());
