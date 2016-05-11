@@ -6,6 +6,7 @@ public class Student {
 	
 	public String[] getInformation() {
 		String[] student = new String[]{this.name, this.liuID};
+		String hej;
 		
 		return student;
 	}
