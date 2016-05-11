@@ -19,4 +19,9 @@ public class Grade {
 	Grades[2] = "VG";
 
 	}
+	
+	private String getGrade(int grade) {
+		
+		
+	}
 }
