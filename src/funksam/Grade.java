@@ -8,20 +8,20 @@ public class Grade {
 	public void getGrade(String student) {
 	
 	//Skapa array
-	String[] Grades;
+	String[] grades;
 	
 	//Sätter storlek på Arrayen
-	Grades = new String[3];
+	grades = new String[3];
 	
 	//Initiera elementen
-	Grades[0] = "U";
-	Grades[1] = "G";
-	Grades[2] = "VG";
+	grades[0] = "U";
+	grades[1] = "G";
+	grades[2] = "VG";
 
 	}
 	
 	private String getGrade(int grade) {
-		
+		return this.grades[grade];
 		
 	}
 }
