@@ -7,9 +7,16 @@ public class Grade {
 	
 	public void getGrade(String student) {
 	
-	ArrayList<String> students = new ArrayList<>();
-	students.add(student);
-	students.get(0);
+	//Skapa array
+	String[] Grades;
+	
+	//Sätter storlek på Arrayen
+	Grades = new String[3];
+	
+	//Initiera elementen
+	Grades[0] = "U";
+	Grades[1] = "G";
+	Grades[2] = "VG";
 
 	}
 }
