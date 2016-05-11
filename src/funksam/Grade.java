@@ -8,7 +8,9 @@ public class Grade {
 
 	
 	private String getGrade(int grade) {
+		System.out.println("hej");
 		return this.grades[grade];
+		
 	}
 }
 

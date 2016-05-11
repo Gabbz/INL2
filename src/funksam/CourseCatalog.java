@@ -6,6 +6,7 @@ public class CourseCatalog {
 
 	private ArrayList<String> courses = new ArrayList<>();
 	public void selectCourse(String course) {
+		System.out.println("hej");
 		
 	}
 }
