@@ -10,7 +10,7 @@ public class Grade {
 	//Skapa array
 	String[] grades;
 	
-	//Sätter storlek på Arrayen
+	//Sï¿½tter storlek pï¿½ Arrayen
 	grades = new String[3];
 	
 	//Initiera elementen
@@ -20,10 +20,10 @@ public class Grade {
 
 	}
 	
-	private String getGrade(int grade) {
-		return this.grades[grade];
+	//private String getGrade(int grade) {
+		//return this.grades[grade];
 		
 		//apa
 		
 	}
-}
+//}

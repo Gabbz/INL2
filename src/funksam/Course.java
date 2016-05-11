@@ -9,12 +9,13 @@ public class Course {
 		ArrayList<String> courseList = new ArrayList<>();
 		
 		String course1 = "725G31";
+		String course2 = "725G80";
 		
 		courseList.add(course1);
+		courseList.add(course2);
 		
-		System.out.println(course1);
-
-		//I have no idea what I'm doing.
+		
+		System.out.println(courseList);
 		
 	}
 	
