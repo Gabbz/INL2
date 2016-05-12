@@ -1,15 +1,17 @@
 package funksam;
 
-import java.util.ArrayList;
-
 
 public class Grade {
-	
-	public void getGrade(String student) {
-	
-	ArrayList<String> students = new ArrayList<>();
-	students.add(student);
-	students.get(0);
 
+	//Skapa array och storlek på Arrayen fitta
+	private String[] grades = {"U","G","VG"};
+
+	
+	private String getGrade(int grade) {
+		String hej;
+		return this.grades[grade];
+		
+		
 	}
 }
+

@@ -2,9 +2,12 @@ package funksam;
 
 public class Student {
 	String name;
-	String sex;
+	String liuID;
 	
-	public void information() {
+	public String[] getInformation() {
+		String[] student = new String[]{this.name, this.liuID};
+		String hej;
 		
+		return student;
 	}
 }
