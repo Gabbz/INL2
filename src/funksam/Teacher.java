@@ -1,5 +1,7 @@
 package funksam;
 
+import java.util.Scanner;
+
 public class Teacher {
 
 	public static void main(String[] args) {
@@ -12,11 +14,22 @@ public class Teacher {
 		allCourses.addCourse(C725G31);
 		
 		
-		Course selectedCourse = allCourses.selectCourse("725G80"); //INGEN FELHANTERING
-		selectedCourse.describeCourse();
+		Course selectedCourse = allCourses.selectCourse(userInput());
+		if( selectedCourse != null) {
+			selectedCourse.describeCourse();
+		}
 		
-		allCourses.getCourses();
+		//DEBUGGING
+		//allCourses.getCourses();
 		
 	
+	}
+	
+	public static String userInput() {
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Ange en kurskod: ");
+		String input = scanner.nextLine();
+		scanner.close();
+		return input;
 	}
 }
