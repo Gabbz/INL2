@@ -10,15 +10,16 @@ public class Teacher {
 		
 		create();
 		setGrade();
-
+		
 		//DEBUGGING
-//		Course selectedCourse = allCourses.selectCourse(userInput());
+		Course selectedCourse = allCourses.selectCourse("725G31");
 //		if( selectedCourse != null) {
 //			selectedCourse.describeCourse();
 //			selectedCourse.courseStudents.getStudents();
 //			selectedCourse.courseAssignments.getAssignments();
 //		}
 		
+		System.out.println(selectedCourse.courseStudents.selectStudent("jonbo488").selectAssignment("INL1").assignmentGrade);
 		
 		//BETYGSÄTT DEN ALLMÄNNA UPPGIFTEN - FEL!
 //		selectedCourse.courseAssignments.selectAssignment("INL1").gradeAssignment("G");
@@ -48,14 +49,14 @@ public class Teacher {
 //		String course = scanner.nextLine();
 		Course selectedCourse = allCourses.selectCourse("725G31");
 		if (selectedCourse != null) {
-			System.out.println("Vald Kurs: ");
+			System.out.print("Vald Kurs: ");
 			selectedCourse.describeCourse();
 			//STUDENT
 //			System.out.print("Välj en student (använd LiUID): ");
 //			String student = scanner.nextLine();
 			Student selectedStudent = selectedCourse.courseStudents.selectStudent("jonbo488");
 			if (selectedStudent != null) {
-				System.out.println("Vald student: ");
+				System.out.print("Vald student: ");
 				selectedStudent.describeStudent();
 				
 				//UPPGIFT
@@ -63,14 +64,16 @@ public class Teacher {
 //				String assignment = scanner.nextLine();
 				Assignment selectedAssignment = selectedStudent.selectAssignment("INL1");
 				if (selectedAssignment != null) {
-					System.out.println("Vald uppgift: ");
+					System.out.print("Vald uppgift: ");
 					selectedAssignment.describeAssignment();
 					
 					//BETYG
 //					System.out.print("Sätt ett betyg (U,G,VG): ");
 //					String grade = scanner.nextLine().toUpperCase();
-					selectedAssignment.gradeAssignment("G");
-					System.out.println("");
+					selectedAssignment.gradeAssignment("VG");
+					System.out.println("Studenten " + selectedStudent.studentName + " har fått betyget \"" 
+					+ selectedAssignment.assignmentGrade + "\" på uppgiften " + selectedAssignment.assignmentName 
+					+ " i kursen " + selectedCourse.courseName + ".");
 				} else System.out.println("Uppgiften hittades inte.");
 				//DEBUGGING
 //				System.out.println("finns");

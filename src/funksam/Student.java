@@ -23,6 +23,6 @@ public class Student {
 	}
 	
 	public void describeStudent() {
-		System.out.print("Student name: " + this.studentName + ". Liu ID: " + this.liuID);
+		System.out.println("Student name: " + this.studentName + ". Liu ID: " + this.liuID);
 	}
 }

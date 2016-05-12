@@ -14,7 +14,7 @@ public class Grade {
 			break;
 			case "G": returnGrade = grades[1];
 			break;
-			case "VG": returnGrade = grades[1];
+			case "VG": returnGrade = grades[2];
 			break;
 		}
 		return returnGrade;

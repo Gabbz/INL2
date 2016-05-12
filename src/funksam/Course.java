@@ -15,7 +15,7 @@ public class Course {
 	}
 	
 	public void describeCourse() {
-		System.out.print("Course code: " + this.courseCode + ". Course name: " + this.courseName);
+		System.out.println("Course code: " + this.courseCode + ". Course name: " + this.courseName);
 	}
 	
 	//SKA HA ASSIGNMENT CATALOG
