@@ -3,14 +3,21 @@ package funksam;
 
 public class Grade {
 
-	//Skapa array och storlek pï¿½ Arrayen fitta
-	private String[] grades = {"U","G","VG"};
+	//ARRAY OCH STORLEK SÄTT STORLEKEN PÅ ARRAYEN
+	private static String[] grades = {"U","G","VG"};
 
 	
-	//private String getGrade(int grade) {
-		//return this.grades[grade];
-		
-		
+	public static String getGrade(String grade) {
+		String returnGrade = "U";
+		switch (grade) {	
+			case "U": returnGrade = grades[0];
+			break;
+			case "G": returnGrade = grades[1];
+			break;
+			case "VG": returnGrade = grades[1];
+			break;
+		}
+		return returnGrade;
 	}
-//}
+}
 

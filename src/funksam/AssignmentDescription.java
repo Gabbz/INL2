@@ -12,7 +12,7 @@ public class AssignmentDescription {
 	
 	public void addDesc(String assignmentCode) {
 		
-		descriptionList.add(assignmentCode);
+		//descriptionList.add(assignmentCode);
 		this.moment1 = "Moment 1" + "\nUppgift avseende gruppsykologi i projekt[3 HP] \n\nBeskrivning av projektuppgiften:" +
 				"\n1. Inledningsvis skall de olika projektgrupperna vÃ¤lja minst tre omrÃ¥den att fÃ¶rdjupa sig i. "
 				+ "\nDessa val av omrÃ¥den utförs vid kursstart, mÃ¥ndag den 5 augusti och skall presenteras pÃ¥ seminarium den 14 augusti."

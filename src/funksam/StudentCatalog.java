@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class StudentCatalog {
 	
-	private ArrayList<Student> studentList = new ArrayList<>();
+	ArrayList<Student> studentList = new ArrayList<>();
 	
 	public Student selectStudent(String student) {
 		for (Student s : this.studentList) {
@@ -17,5 +17,12 @@ public class StudentCatalog {
 	
 	public void addStudent(Student student) {
 		studentList.add(student);
+	}
+	
+	public void getStudents() {
+		for(int i = 0; i < studentList.size(); i++) {
+			studentList.get(i).describeStudent();
+			System.out.println();
+		}
 	}
 }
