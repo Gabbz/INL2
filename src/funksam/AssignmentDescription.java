@@ -5,8 +5,7 @@ public class AssignmentDescription {
 	public static void main(String[] args) {
 	
 	
-	
-		String moment1, moment2;
+		String moment1, moment2, moment3, moment4;
 		
 		
 		moment1 = "Moment 1" + "\nUppgift avseende gruppsykologi i projekt[3 HP] \n\nBeskrivning av projektuppgiften:" +
@@ -19,26 +18,50 @@ public class AssignmentDescription {
 				+ "\nvia e‐post senast måndag den 23 augusti kl. 17.00. Detta arbete genomförs individuellt av varje student.";
 		
 		
-		moment2 ="Moment 2" + "\nUppgift avseende initial kartläggning [2HP] \n\nBeskrivning av projektuppgiften:" +
+		moment2 ="\n\n\nMoment 2" + "\nUppgift avseende initial kartläggning [2HP] \n\nBeskrivning av projektuppgiften:" +
 				"\nUppgiften består i att utifrån en angelägen och aktuell debatt samt ur kurslitteraturen/referenslitteraturen i en PM,  " +
-				"\n resonera kring affärssystem som fenomen och dess ”möte” med organisationer. " +
+				"\nresonera kring affärssystem som fenomen och dess ”möte” med organisationer. " +
 				"\nInspiration till och stöd för resonemang kan också sökas utanför kurslitteraturen, i t.ex. resurslista i Funksam" + 
-				"\n under Kursdokument eller litteratur som söks på egen hand." +
+				"\nunder Kursdokument eller litteratur som söks på egen hand." +
 				
 				"\n\n1. Var noga med att använda källor, såväl tryckta som elektroniska anges tydligt med sedvanlig referenshantering "
 				+ "\noch listas (utöver de angivna sidorna).Minst fem källor av akademisk karaktär." +
 				
 				"\n\n2. Uppgiften redovisas i en PM omfattande maximalt sex A4-sidor (cirka 4000 ord). +"
-				+ "\n Inlämning sker senast tisdag 16e september via Funksam.";
+				+ "\nInlämning sker senast tisdag 16e september via Funksam.";
+		
+		moment3 = "\n\n\nMoment 3" + "\nUppgift utredningsprojekt[6 HP] \n\nBeskrivning av projektuppgiften:" +
+				"\nSyftet med projektarbetet är att skaffa sig kunskap om olika perspektiv på affärssystem och organisering. "
+				+ "Arbetet skall i första hand bedrivas i grupper om fyra studenter. "
+				+ "Projektuppgiften kan övergripande beskrivas som möjlig att till stor del anpassa till projektgruppens intresse "
+				+ "med avseende på sitt innehåll inom kursens ramar."
+				+ "Uppgiften består i att utifrån en angelägen och aktuell debatt samt ur kurslitteraturen/referenslitteraturen i en PM,  " +
 		
 		
-		public void getDescription(){
+				"\n\n1. Var noga med att använda källor, såväl tryckta som elektroniska anges tydligt med sedvanlig referenshantering " 
+				+ "\noch listas (utöver de angivna sidorna).Minst tio källor av akademisk karaktär." +
+				
+				"\n\n2. Uppgiften redovisas i en PM omfattande maximalt sex A4-sidor (cirka 4000 ord). +"
+				+ "\nProjektarbetet lämnas in vid tre tillfällen under kursens gång enligt schema. "
+				+ "\nTvå gånger inför handledning samt en slutinlämning. Samtliga inlämningar sker via FUNKSAM.";
 		
-		}
+		moment4 = "\n\n\n\nMoment 4" + "\nUppgift avseende Design och värdering av en e-tjänst [4HP] \n\nBeskrivning av projektuppgiften:"		 
 
-		System.out.println(moment1 + "\n\n" + moment2);
-
-
+				+ "\nUppgiften innebär att design och utvärdering skall ske kriteriebaserat utifrån av gruppen formulerade kriterier. "
+				+ "\nE-tjänsten skall visualiseras på det sätt gruppen väljer; t.ex. genom skisser över tjänsten, gränssnitt, grafisk prototyp eller liknande. "
+				
+				+ "\n\n1.Var noga med att använda källor, såväl tryckta som elektroniska anges tydligt med sedvanlig referenshantering " 
+				+ "\noch listas (utöver de angivna sidorna).Minst tio källor av akademisk karaktär." +
+		
+				"\n\n2. Projektarbetet lämnas in vid tre tillfällen under kursens gång enligt schema. \nTvå gånger inför handledning samt en slutinlämning. "
+				+ "Samtliga inlämningar sker senast fredagen den 15 september kl. 08.00.";
+		
+	
+		System.out.println(moment1 + "\\n" + "\\n" + moment2 + "\\n" + moment3 + "\\n" + moment4);
+		
+		//public void getDescription(){
+		
+		//}
 
 	}
 }
