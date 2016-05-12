@@ -1,14 +1,19 @@
 package funksam;
+import java.util.ArrayList;
 
 public class AssignmentDescription {
 	
-	public static void main(String[] args) {
+	private ArrayList<AssignmentDescription> descriptionList = new ArrayList<AssignmentDescription>(); 
+	String moment1, moment2, moment3, moment4;
 	
+	public AssignmentDescription (String assignmentCode, String description){
+		//FÖR ATT SKAPA NY DESC.
+	}
 	
-		String moment1, moment2, moment3, moment4;
+	public void addDesc(String assignmentCode) {
 		
-		
-		moment1 = "Moment 1" + "\nUppgift avseende gruppsykologi i projekt[3 HP] \n\nBeskrivning av projektuppgiften:" +
+		descriptionList.add(assignmentCode);
+		this.moment1 = "Moment 1" + "\nUppgift avseende gruppsykologi i projekt[3 HP] \n\nBeskrivning av projektuppgiften:" +
 				"\n1. Inledningsvis skall de olika projektgrupperna välja minst tre områden att fördjupa sig i. "
 				+ "\nDessa val av områden utförs vid kursstart, måndag den 5 augusti och skall presenteras på seminarium den 14 augusti."
 				+ "\nTeorier avseende de olika fördjupningsområdena finns i kursboken Projektledning av Bo Tonnquist. "
@@ -18,7 +23,7 @@ public class AssignmentDescription {
 				+ "\nvia e‐post senast måndag den 23 augusti kl. 17.00. Detta arbete genomförs individuellt av varje student.";
 		
 		
-		moment2 ="\n\n\nMoment 2" + "\nUppgift avseende initial kartläggning [2HP] \n\nBeskrivning av projektuppgiften:" +
+		this.moment2 ="\n\n\nMoment 2" + "\nUppgift avseende initial kartläggning [2HP] \n\nBeskrivning av projektuppgiften:" +
 				"\nUppgiften består i att utifrån en angelägen och aktuell debatt samt ur kurslitteraturen/referenslitteraturen i en PM,  " +
 				"\nresonera kring affärssystem som fenomen och dess ”möte” med organisationer. " +
 				"\nInspiration till och stöd för resonemang kan också sökas utanför kurslitteraturen, i t.ex. resurslista i Funksam" + 
@@ -30,7 +35,7 @@ public class AssignmentDescription {
 				"\n\n2. Uppgiften redovisas i en PM omfattande maximalt sex A4-sidor (cirka 4000 ord). +"
 				+ "\nInlämning sker senast tisdag 16e september via Funksam.";
 		
-		moment3 = "\n\n\nMoment 3" + "\nUppgift utredningsprojekt[6 HP] \n\nBeskrivning av projektuppgiften:" +
+		this.moment3 = "\n\n\nMoment 3" + "\nUppgift utredningsprojekt[6 HP] \n\nBeskrivning av projektuppgiften:" +
 				"\nSyftet med projektarbetet är att skaffa sig kunskap om olika perspektiv på affärssystem och organisering. "
 				+ "Arbetet skall i första hand bedrivas i grupper om fyra studenter. "
 				+ "Projektuppgiften kan övergripande beskrivas som möjlig att till stor del anpassa till projektgruppens intresse "
@@ -45,7 +50,7 @@ public class AssignmentDescription {
 				+ "\nProjektarbetet lämnas in vid tre tillfällen under kursens gång enligt schema. "
 				+ "\nTvå gånger inför handledning samt en slutinlämning. Samtliga inlämningar sker via FUNKSAM.";
 		
-		moment4 = "\n\n\n\nMoment 4" + "\nUppgift avseende Design och värdering av en e-tjänst [4HP] \n\nBeskrivning av projektuppgiften:"		 
+		this.moment4 = "\n\n\n\nMoment 4" + "\nUppgift avseende Design och värdering av en e-tjänst [4HP] \n\nBeskrivning av projektuppgiften:"		 
 
 				+ "\nUppgiften innebär att design och utvärdering skall ske kriteriebaserat utifrån av gruppen formulerade kriterier. "
 				+ "\nE-tjänsten skall visualiseras på det sätt gruppen väljer; t.ex. genom skisser över tjänsten, gränssnitt, grafisk prototyp eller liknande. "
