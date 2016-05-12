@@ -1,9 +1,13 @@
 
 package funksam;
 
-public class Course {				
+public class Course {
 	String courseName;
 	String courseCode;
+	StudentCatalog courseStudents = new StudentCatalog();
+	AssignmentCatalog courseAssignments = new AssignmentCatalog();
+	
+	
 	
 	public Course(String courseName, String courseCode) { //HÄR MATAR MAN IN VILKEN KURS MAN VILL SKAPA EGENTLIGEN.
 		this.courseName = courseName;
@@ -15,5 +19,8 @@ public class Course {
 	}
 	
 	//SKA HA ASSIGNMENT CATALOG
+	//SKA HA STUDENTCATALOG
+	
+
 	
 }
