@@ -1,22 +1,19 @@
 
 package funksam;
-import java.util.ArrayList;
 
-public class Course {
-		
-	public static void main (String[] args) {				
-		
-		ArrayList<String> courseList = new ArrayList<>();
-		
-		String course1 = "725G31";
-		String course2 = "725G80";
-		
-		courseList.add(course1);
-		courseList.add(course2);
-		
-		
-		System.out.println(courseList);
-		
+public class Course {				
+	String courseName;
+	String courseCode;
+	
+	public Course(String courseName, String courseCode) { //HÄR MATAR MAN IN VILKEN KURS MAN VILL SKAPA EGENTLIGEN.
+		this.courseName = courseName;
+		this.courseCode = courseCode;
 	}
+	
+	public void describeCourse() {
+		System.out.println("Course code: " + this.courseCode + ". Course name: " + this.courseName);
+	}
+	
+	//SKA HA ASSIGNMENT CATALOG
 	
 }
