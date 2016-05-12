@@ -29,7 +29,7 @@ moment2 ="Moment 2" + "\nUppgift avseende initial kartläggning [2HP] \n\nBeskri
 		+ "\noch listas (utöver de angivna sidorna).Minst fem källor av akademisk karaktär." +
 		
 		"\n\n2. Uppgiften redovisas i en PM omfattande maximalt sex A4-sidor (cirka 4000 ord). +"
-		+ "\n Inlämning sker senast måndag 16e september via Funksam.";
+		+ "\n Inlämning sker senast tisdag 16e september via Funksam.";
 
 
 public void getDescription(){
