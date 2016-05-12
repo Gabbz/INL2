@@ -15,7 +15,7 @@ public class AssignmentDescription {
 		descriptionList.add(assignmentCode);
 		this.moment1 = "Moment 1" + "\nUppgift avseende gruppsykologi i projekt[3 HP] \n\nBeskrivning av projektuppgiften:" +
 				"\n1. Inledningsvis skall de olika projektgrupperna vÃ¤lja minst tre omrÃ¥den att fÃ¶rdjupa sig i. "
-				+ "\nDessa val av omrÃ¥den utfÃ¶rs vid kursstart, mÃ¥ndag den 5 augusti och skall presenteras pÃ¥ seminarium den 14 augusti."
+				+ "\nDessa val av omrÃ¥den utförs vid kursstart, mÃ¥ndag den 5 augusti och skall presenteras pÃ¥ seminarium den 14 augusti."
 				+ "\nTeorier avseende de olika fÃ¶rdjupningsomrÃ¥dena finns i kursboken Projektledning av Bo Tonnquist. "
 				+ "\n\n2. UtfÃ¶r dÃ¤refter en individuell fÃ¶rdjupning Ã¶ver vad agilt ledarskap kan innebÃ¤ra,"
 				+ "\noch skriv ett referat frÃ¥n minst tvÃ¥ bÃ¶cker samt reflektera Ã¶ver hur man kan arbeta agilt i det projektarbete som ni genomfÃ¶r. "
