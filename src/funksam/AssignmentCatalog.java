@@ -8,7 +8,7 @@ public class AssignmentCatalog {
 	
 	public Assignment selectAssignment(String assignment) {
 		for (Assignment a : this.assignmentList) {
-			if(a.assignmentName != null && a.assignmentName.equals(assignment)) {
+			if(a.getAssignmentName() != null && a.getAssignmentName().equals(assignment)) {
 			return a;
 			} 
 		}
@@ -17,8 +17,10 @@ public class AssignmentCatalog {
 	
 	public void addAssignment(Assignment assignment, Course course) {
 		assignmentList.add(assignment);
-		for (Student s : course.courseStudents.studentList) {
-			s.courseAssignments.add(assignment);
+		for (Student s : course.getCourseStudentCatalog().getStudentList()) {
+			s.getCourseAssignments().add(assignment);
+			s.getAssignmentGrade().put(assignment, null);
+			
 		}
 	}
 	

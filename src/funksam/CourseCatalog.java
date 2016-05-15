@@ -8,7 +8,7 @@ public class CourseCatalog {
 	
 	public Course selectCourse(String course) {
 		for (Course c : this.courseList) {
-			if(c.courseCode != null && c.courseCode.equals(course)) {
+			if(c.getCourseCode() != null && c.getCourseCode().equals(course)) {
 			return c;
 			} 
 		}
@@ -17,8 +17,8 @@ public class CourseCatalog {
 	
 	public void getCourses() {
 		for(int i = 0; i < courseList.size(); i++) {
-			System.out.println(courseList.get(i).courseName);
-			System.out.println(courseList.get(i).courseCode);
+			System.out.println(courseList.get(i).getCourseName());
+			System.out.println(courseList.get(i).getCourseCode());
 			System.out.println();
 		}
 	}

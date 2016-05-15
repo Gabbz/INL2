@@ -11,11 +11,11 @@ public class Grade {
 		String returnGrade = "U";
 		switch (grade) {	
 			case "U": returnGrade = grades[0];
-			break;
+				break;
 			case "G": returnGrade = grades[1];
-			break;
+				break;
 			case "VG": returnGrade = grades[2];
-			break;
+				break;
 		}
 		return returnGrade;
 	}

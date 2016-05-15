@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class StudentCatalog {
 	
-	ArrayList<Student> studentList = new ArrayList<>();
+	private ArrayList<Student> studentList = new ArrayList<>();
 	
 	public Student selectStudent(String student) {
 		for (Student s : this.studentList) {
-			if(s.liuID != null && s.liuID.equals(student)) {
+			if(s.getLiuID() != null && s.getLiuID().equals(student)) {
 			return s;
 			} 
 		}
@@ -19,10 +19,14 @@ public class StudentCatalog {
 		studentList.add(student);
 	}
 	
-	public void getStudents() {
+	public void getAllStudents() {
 		for(int i = 0; i < studentList.size(); i++) {
 			studentList.get(i).describeStudent();
 			System.out.println();
 		}
+	}
+	
+	public ArrayList<Student> getStudentList() {
+		return this.studentList;
 	}
 }

@@ -2,13 +2,11 @@
 package funksam;
 
 public class Course {
-	String courseName;
-	String courseCode;
-	double maxPoints;
-	StudentCatalog courseStudents = new StudentCatalog();
-	AssignmentCatalog courseAssignments = new AssignmentCatalog();
-	
-	
+	private String courseName;
+	private String courseCode;
+	private double maxPoints;
+	private StudentCatalog courseStudents = new StudentCatalog();
+	private AssignmentCatalog courseAssignments = new AssignmentCatalog();
 	
 	public Course(String courseName, String courseCode, double maxPoints) { //HÄR MATAR MAN IN VILKEN KURS MAN VILL SKAPA EGENTLIGEN.
 		this.courseName = courseName;
@@ -19,10 +17,24 @@ public class Course {
 	public void describeCourse() {
 		System.out.println("Course code: " + this.courseCode + ". Course name: " + this.courseName);
 	}
-	
-	//SKA HA ASSIGNMENT CATALOG
-	//SKA HA STUDENTCATALOG
-	
 
+	public String getCourseName() {
+		return this.courseName;
+	}
 	
+	public String getCourseCode() {
+		return this.courseCode;
+	}
+
+	public double getMaxPoints() {
+		return this.maxPoints;
+	}
+	
+	public StudentCatalog getCourseStudentCatalog() {
+		return this.courseStudents;
+	}
+	
+	public AssignmentCatalog getCourseAssignmentCatalog() {
+		return this.courseAssignments;
+	}
 }

@@ -1,18 +1,25 @@
 package funksam;
 
 public class Assignment {
-	String assignmentName;
-	String assignmentGrade;
+	private String assignmentName;
+	private AssignmentDescription assDesc;
 	
-	public Assignment(String assignmentName) { //HÄR MATAR MAN IN VILKEN UPPGIFT MAN VILL SKAPA EGENTLIGEN.
+	public Assignment(String assignmentName, String description) { 
+		
 		this.assignmentName = assignmentName;
+		this.assDesc = new AssignmentDescription(assignmentName, description);
 	}
 	
 	public void describeAssignment() {
 		System.out.println("Assignment name: " + this.assignmentName);
 	}
+		
+	public String getAssignmentName() {
+		return this.assignmentName;
+	}
 	
-	public void gradeAssignment(String grade) {
-		assignmentGrade = Grade.getGrade(grade);
+	public AssignmentDescription getAssignmentDescription() {
+		return assDesc;
+		
 	}
 }
