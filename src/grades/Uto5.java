@@ -2,7 +2,7 @@ package grades;
 
 import java.util.ArrayList;
 
-public class UtoVG implements GradeListInterface {
+public class Uto5 implements GradeListInterface {
 
 	private ArrayList<String> listOfGrades = new ArrayList<>();
 
@@ -14,8 +14,9 @@ public class UtoVG implements GradeListInterface {
 
 	public void fillListOfGrades() {
 		this.listOfGrades.add("U");
-		this.listOfGrades.add("G");
-		this.listOfGrades.add("VG");
+		this.listOfGrades.add("3");
+		this.listOfGrades.add("4");
+		this.listOfGrades.add("5");
 		
 	}
 

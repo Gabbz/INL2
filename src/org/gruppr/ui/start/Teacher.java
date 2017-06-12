@@ -132,7 +132,11 @@ public class Teacher {
 							break loop;
 						case "G": gradePoints += 1;
 							break;
-						case "VG": gradePoints += 2;
+						case "3": gradePoints += 1;
+							break;
+						case "4": gradePoints += 2;
+							break;
+						case "5": gradePoints += 2;
 							break;
 						default: 
 							System.out.print("Betyget: " + selectedStudent.getAssignmentGrade().get(a) + " för uppgift " + 
@@ -165,12 +169,12 @@ public class Teacher {
 		allCourses.addCourse(C725G31);
 		
 		GradeList uToG = new GradeList("UtoG");
-		GradeList uToVG = new GradeList("UtoVG");
+		GradeList uTo5 = new GradeList("Uto5");
 		
-		Assignment INL1 = new Assignment("INL1", createAssignmentDescription(1), uToVG);
+		Assignment INL1 = new Assignment("INL1", createAssignmentDescription(1), uTo5);
 		Assignment INL2 = new Assignment("INL2", createAssignmentDescription(2), uToG);
-		Assignment INL3 = new Assignment("INL3", createAssignmentDescription(3), uToVG);
-		Assignment INL4 = new Assignment("INL4", createAssignmentDescription(4), uToVG);
+		Assignment INL3 = new Assignment("INL3", createAssignmentDescription(3), uTo5);
+		Assignment INL4 = new Assignment("INL4", createAssignmentDescription(4), uTo5);
 		
 		C725G31.getCourseAssignmentCatalog().addAssignment(INL1);
 		C725G31.getCourseAssignmentCatalog().addAssignment(INL2);

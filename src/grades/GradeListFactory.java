@@ -13,8 +13,8 @@ public class GradeListFactory {
 	}
 	
 	public GradeListInterface getGradeListInterface(String grades) {
-		if (grades == "UtoVG") return gradeInterface = new UtoVG();
-		else if (grades == "UtoG") return gradeInterface = new UtoG();
+		if (grades == "UtoG") return gradeInterface = new UtoG();
+		else if (grades == "Uto5") return gradeInterface = new Uto5();
 		else return null;
 		
 	}
