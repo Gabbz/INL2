@@ -1,32 +1,25 @@
-package funksam;
+package org.gruppr.ui.start;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Teacher {
+import assignment.Assignment;
+import courses.Course;
+import courses.CourseCatalog;
+import externalSystems.PersistentStorage;
+import grades.GradeList;
+import students.Student;
 
+
+public class Teacher {
+	
 	private static CourseCatalog allCourses = new CourseCatalog();
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		
 		create();
 		init();
 		
-		//DEBUGGING
-//		Course selectedCourse = allCourses.selectCourse("725G31");
-//		if( selectedCourse != null) {
-//			selectedCourse.describeCourse();
-//			selectedCourse.courseStudents.getStudents();
-//			selectedCourse.courseAssignments.getAssignments();
-//		}
-//		System.out.println(selectedCourse.courseStudents.selectStudent("jonbo488").selectAssignment("INL1").assignmentGrade);
-		//BETYGSÄTT DEN ALLMÄNNA UPPGIFTEN - FEL!
-//		selectedCourse.courseAssignments.selectAssignment("INL1").gradeAssignment("G");
-//		System.out.println(selectedCourse.courseAssignments.selectAssignment("INL1").assignmentGrade);
-//		selectedCourse.courseStudents.selectStudent("jonbo488").courseAssignments.get()
-//		allCourses.getCourses();
-		
-		
-	
 	}
 	
 	public static void init() {
@@ -34,9 +27,16 @@ public class Teacher {
 		Scanner scanner = new Scanner(System.in);
 		while (true) {
 			setGrade(scanner);
+			System.out.println();
 			System.out.println("Sätta fler betyg? (1 = Ja, 0 = Nej)");
-			exit = scanner.nextInt();
-			scanner.nextLine();	//CLEARAR SCANNERN
+			try {
+				exit = scanner.nextInt();
+			} catch (InputMismatchException ex){
+				System.out.println();
+				System.out.println("Enter a valid number");
+				System.out.println();
+			}
+			scanner.nextLine();	//CLEARAR SCANNERN				
 			if (exit == 0) break;
 		}
 		scanner.close();
@@ -46,74 +46,156 @@ public class Teacher {
 	public static void setGrade(Scanner scanner) {
 		
 		//KURS
+		allCourses.getCourses();
+		
+		System.out.println();
 		System.out.print("Välj en kurs (OBS, skiftlägeskänsligt): ");
 		String course = scanner.nextLine();
-		Course selectedCourse = allCourses.selectCourse(course);
+		Course selectedCourse = allCourses.selectCourse(course);		//VÄLJER KURS
 		if (selectedCourse != null) {
 			System.out.print("Vald Kurs: ");
 			selectedCourse.describeCourse();
+			System.out.println();
 			
 			//STUDENT
+			System.out.println("Studenter som tillhör kursen:");
+			for (int i = 0; i < selectedCourse.getCourseStudents().getSize(); i++) {
+				selectedCourse.getCourseStudents().getStudentList().get(i).describeStudent();
+			}
+			
+			System.out.println();
 			System.out.print("Välj en student (använd LiUID): ");
 			String student = scanner.nextLine();
-			Student selectedStudent = selectedCourse.getCourseStudentCatalog().selectStudent(student);
+			
+			Student selectedStudent = selectedCourse.getCourseStudents().selectStudent(student);		//VÄLJER STUDENT
 			if (selectedStudent != null) {
+				selectedStudent.addObserver(selectedCourse);		//Adding observer
 				System.out.print("Vald student: ");
 				selectedStudent.describeStudent();
+				System.out.println();
 				
 				//UPPGIFT
+				System.out.println("Uppgifter som tillhör kursen och som studenten har:");
+				for (Assignment a : selectedCourse.getCourseAssignmentCatalog().getAssignmentList()) {
+					a.describeAssignment();
+					System.out.print(". Tidigare satt betyg: " );
+					System.out.println(selectedStudent.getAssignmentGrade().get(a));
+				}
+				System.out.println();
 				System.out.print("Välj en uppgift: ");
 				String assignment = scanner.nextLine();
-				Assignment selectedAssignment = selectedStudent.selectAssignment(assignment);
+				Assignment selectedAssignment = selectedStudent.selectAssignment(assignment);		//VÄLJER UPPGIFT
 				if (selectedAssignment != null) {
-					System.out.print("Vald uppgift: ");
-					selectedAssignment.describeAssignment();
-					
-					//BETYG
-					System.out.print("Sätt ett betyg (U,G,VG): ");
-					String grade = scanner.nextLine().toUpperCase();
-					selectedStudent.setAssignmentGrade(selectedAssignment, grade);
-					System.out.println("Studenten " + selectedStudent.getStudentName() + " har fått betyget \"" 
-					+ selectedStudent.getAssignmentGrade().get(selectedAssignment) + "\" på uppgiften " + selectedAssignment.getAssignmentName() 
-					+ " i kursen " + selectedCourse.getCourseName() + ".");
-					
-					int gradePoints = selectedStudent.checkCourseCompletion();
-					if (gradePoints >= (selectedCourse.getMaxPoints()*0.82)) System.out.println("Studenten har fått betyget VG i kursen.");
-					if ((gradePoints >= (selectedCourse.getMaxPoints()*0.4)) && (gradePoints < (selectedCourse.getMaxPoints()*0.82))) 
-					System.out.println("Studenten har fått betyget G i kursen.");
-					
+					for (int i = 0; i < selectedCourse.getCourseAssignmentCatalog().getAssignmentList().size(); i++) {
+						if (selectedAssignment == selectedCourse.getCourseAssignmentCatalog().getAssignmentList().get(i)) {
+							System.out.println("Vald uppgift: " + selectedAssignment.getAssignmentName());
+							System.out.println();
+							
+							//BETYG
+							System.out.print("Sätt ett betyg (");
+							for (int x = 0; x < selectedAssignment.getGradeList().getListOfGrades().size(); x++) {
+								System.out.print(selectedAssignment.getGradeList().getListOfGrades().get(x));
+								if (x < selectedAssignment.getGradeList().getListOfGrades().size()-1) {
+									System.out.print(", ");
+								}
+							}
+							System.out.println("): ");
+							String grade = scanner.nextLine().toUpperCase();
+							selectedStudent.setAssignmentGrade(selectedAssignment, grade);		//SÄTTER BETYG
+							System.out.println("Studenten " + selectedStudent.getStudentName() + " har fått betyget \"" 
+							+ selectedStudent.getAssignmentGrade().get(selectedAssignment) + "\" på uppgiften " + selectedAssignment.getAssignmentName() 
+							+ " i kursen " + selectedCourse.getCourseName() + ".");
+							checkCourseCompletion(selectedCourse, selectedStudent, selectedAssignment);
+							break;
+						} else if (i == selectedCourse.getCourseAssignmentCatalog().getAssignmentList().size()-1) {
+							System.out.println("Uppgiften hittades, men tillhör inte kursens katalog.");
+						}
+					}
 				} else System.out.println("Uppgiften hittades inte.");
 			} else System.out.println("Studenten hittades inte.");
 		} else System.out.println("Kursen hittades inte.");
 	}
 	
+	public static void checkCourseCompletion(Course selectedCourse, Student selectedStudent, Assignment selectedAssignment) {
+		int gradePoints = 0;
+		loop: for (Assignment a : selectedStudent.getCourseAssignments()) {
+			for (int i = 0; i < selectedCourse.getCourseAssignmentCatalog().getAssignmentList().size(); i++) {
+				if(a == selectedCourse.getCourseAssignmentCatalog().getAssignmentList().get(i)) {
+					switch (selectedStudent.getAssignmentGrade().get(a)) {	
+						case "NONE": System.out.println("Hela uppgiftskatalogen är ännu inte fullständig.");
+						gradePoints = 0;
+							break loop;
+						case "U": System.out.println("Studenten har en underkänd uppgift i katalogen, och "
+								+ "är därför inte klar med kursen. \nUnderkänd uppgift: " +
+								a.getAssignmentName());
+						gradePoints = 0;
+							break loop;
+						case "G": gradePoints += 1;
+							break;
+						case "VG": gradePoints += 2;
+							break;
+						default: 
+							System.out.print("Betyget: " + selectedStudent.getAssignmentGrade().get(a) + " för uppgift " + 
+									a.getAssignmentName() + " är i felaktigt format och bör ändras. Giltiga format är (");
+							for (int x = 0; x < selectedAssignment.getGradeList().getListOfGrades().size(); x++) {
+								System.out.print(selectedAssignment.getGradeList().getListOfGrades().get(x));
+								if (x < selectedAssignment.getGradeList().getListOfGrades().size()-1) {
+									System.out.print(", ");
+								}
+							}
+							System.out.println(").");
+					}
+				}
+			} 
+		}
+		if (gradePoints >= (selectedCourse.getMaxPoints()*0.82)) System.out.println("Studenten har fått betyget VG i kursen.");
+		else if ((gradePoints >= (selectedCourse.getMaxPoints()*0.4)) && (gradePoints < (selectedCourse.getMaxPoints()*0.82))) 
+		System.out.println("Studenten har fått betyget G i kursen.");
+	}
+	
 	//ALLT UNDER DEN HÄR LINJEN ÄR ENBART FÖR ATT VISA ATT KODEN FUNGERAR MED SIMULERAD TESTDATA.
 	//-------------------------------------------------------------------------------------------
 	
-	public static void create() {
+	public static void create() throws Exception {
 		
-		Course C725G31 = new Course("Java", "725G31", 8.0);					//DUMMIES FÖR INL2, GÖRS EGENTLIGEN I EGET ANVÄNDNINGSFALL OCH KLASS
-		Course C725G80 = new Course("Affärssystem", "725G80", 2.0);
+		Course C725G31 = new Course("Java", "725G31", 3.0);					//DUMMIES FÖR INL2, GÖRS EGENTLIGEN I EGET ANVÄNDNINGSFALL OCH KLASS
+		Course C725G80 = new Course("Affärssystem", "725G80", 4.0);
 		
 		allCourses.addCourse(C725G80);
 		allCourses.addCourse(C725G31);
 		
-		Student roykr837 = new Student("roykr837", "Roy Kronemberg");			
-		Student jonbo488 = new Student("jonbo488", "Jonas Borg");
+		GradeList uToG = new GradeList("UtoG");
+		GradeList uToVG = new GradeList("UtoVG");
 		
-		Assignment INL1 = new Assignment("INL1", createAssignmentDescription(1));
-		Assignment INL2 = new Assignment("INL2", createAssignmentDescription(2));
-		Assignment INL3 = new Assignment("INL3", createAssignmentDescription(3));
-		Assignment INL4 = new Assignment("INL4", createAssignmentDescription(4));
+		Assignment INL1 = new Assignment("INL1", createAssignmentDescription(1), uToVG);
+		Assignment INL2 = new Assignment("INL2", createAssignmentDescription(2), uToG);
+		Assignment INL3 = new Assignment("INL3", createAssignmentDescription(3), uToVG);
+		Assignment INL4 = new Assignment("INL4", createAssignmentDescription(4), uToVG);
 		
-		C725G31.getCourseStudentCatalog().addStudent(jonbo488);
-		C725G31.getCourseStudentCatalog().addStudent(roykr837);
-		C725G31.getCourseAssignmentCatalog().addAssignment(INL1, C725G31);
-		C725G31.getCourseAssignmentCatalog().addAssignment(INL2, C725G31);
-		C725G31.getCourseAssignmentCatalog().addAssignment(INL3, C725G31);
-		C725G31.getCourseAssignmentCatalog().addAssignment(INL4, C725G31);
-		C725G80.getCourseAssignmentCatalog().addAssignment(INL1, C725G80);
-		C725G80.getCourseAssignmentCatalog().addAssignment(INL2, C725G80);
+		C725G31.getCourseAssignmentCatalog().addAssignment(INL1);
+		C725G31.getCourseAssignmentCatalog().addAssignment(INL2);
+		C725G80.getCourseAssignmentCatalog().addAssignment(INL3);
+		C725G80.getCourseAssignmentCatalog().addAssignment(INL4);
+		
+		//Borttagna pg bd-stöd
+//		Student roykr837 = new Student("roykr837", "Roy Kronemberg");			
+//		Student jonbo488 = new Student("jonbo488", "Jonas Borg");
+		
+		
+		PersistentStorage ps = new PersistentStorage();
+		
+		
+		C725G31.setCourseStudents(ps.getStudents(C725G31.getCourseCode()).get(C725G31.getCourseCode()));
+		C725G80.setCourseStudents(ps.getStudents(C725G80.getCourseCode()).get(C725G80.getCourseCode()));
+		
+		//Borttagna pga db-stöd
+//		C725G31.getCourseStudents().addStudent(jonbo488);
+//		C725G31.getCourseStudents().addStudent(roykr837);
+//		C725G80.getCourseStudents().addStudent(jonbo488);
+		
+		C725G31.flush();
+		C725G80.flush();
+
 		
 		
 	}
@@ -173,4 +255,5 @@ public class Teacher {
 		}
 		return returnmoment;
 	}
+
 }

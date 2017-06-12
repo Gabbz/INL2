@@ -1,4 +1,4 @@
-package funksam;
+package assignment;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +10,7 @@ public class AssignmentDescription {
 		this.descriptionList.put(assignmentName, description);
 	}
 	
-	public void addDesc(String assignmentName, String description) {
+	public void addDescription(String assignmentName, String description) {
 		this.descriptionList.put(assignmentName, description);
 	}
 	

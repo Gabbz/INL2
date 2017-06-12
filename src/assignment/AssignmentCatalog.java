@@ -1,9 +1,10 @@
-package funksam;
+package assignment;
 
 import java.util.ArrayList;
 
 public class AssignmentCatalog {
 	
+	private int size = 0;
 	private ArrayList<Assignment> assignmentList = new ArrayList<>();
 	
 	public Assignment selectAssignment(String assignment) {
@@ -15,20 +16,23 @@ public class AssignmentCatalog {
 		return null;
 	}
 	
-	public void addAssignment(Assignment assignment, Course course) {
+	public void addAssignment(Assignment assignment) {
 		assignmentList.add(assignment);
-		for (Student s : course.getCourseStudentCatalog().getStudentList()) {
-			s.getCourseAssignments().add(assignment);
-			s.getAssignmentGrade().put(assignment, null);
-			
-		}
+		this.size++;
 	}
 	
 	public void getAssignments() {
 		for(int i = 0; i < assignmentList.size(); i++) {
 			assignmentList.get(i).describeAssignment();
-			System.out.println();
 		}
+	}
+	
+	public ArrayList<Assignment> getAssignmentList() {
+		return this.assignmentList;
+	}
+	
+	public int getSize() {
+		return this.size;
 	}
 	
 }

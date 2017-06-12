@@ -1,4 +1,4 @@
-package funksam;
+package courses;
 
 import java.util.ArrayList;
 
@@ -16,10 +16,9 @@ public class CourseCatalog {
 	}
 	
 	public void getCourses() {
-		for(int i = 0; i < courseList.size(); i++) {
-			System.out.println(courseList.get(i).getCourseName());
-			System.out.println(courseList.get(i).getCourseCode());
-			System.out.println();
+		System.out.println("Tillgängliga kurser:");
+		for(Course c : this.courseList) {
+			c.describeCourse();
 		}
 	}
 	

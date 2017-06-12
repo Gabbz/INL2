@@ -1,14 +1,22 @@
-package funksam;
+package students;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Observable;
 
-public class Student {
+import assignment.Assignment;
+
+public class Student extends Observable{
 	private String studentName;
 	private String liuID;
 	private ArrayList<Assignment> courseAssignments = new ArrayList<>();
 	private Map<Assignment, String> assignmentGrade = new HashMap<Assignment, String>();
+	
+	public Student(String liuID, String studentName) { //HÄR MATAR MAN IN VILKEN STUDENT MAN VILL SKAPA EGENTLIGEN.
+		this.studentName = studentName;
+		this.liuID = liuID;
+	}
 	
 	public Assignment selectAssignment(String assignment) {
 		for (Assignment a : this.courseAssignments) {
@@ -19,35 +27,9 @@ public class Student {
 		return null;
 	}
 	
-	
-	public Student(String liuID, String studentName) { //HÄR MATAR MAN IN VILKEN STUDENT MAN VILL SKAPA EGENTLIGEN.
-		this.studentName = studentName;
-		this.liuID = liuID;
-	}
-	
 	public void describeStudent() {
-		System.out.println("Student name: " + this.studentName + ". Liu ID: " + this.liuID);
+		System.out.println("Studentens namn: " + this.studentName + ". Liu ID: " + this.liuID);
 	}
-	
-	public int checkCourseCompletion() {
-		int coursePoints = 0;
-		for(int i=0; i < assignmentGrade.size(); i++) {
-			if (assignmentGrade.get(courseAssignments.get(i)) == null) {
-				System.out.println("Hela uppgiftskatalogen är ännu inte fullständig.");
-				coursePoints = 0;
-				break;
-			} else if (assignmentGrade.get(courseAssignments.get(i)) == "U") {
-				System.out.println("Studenten har en underkänd uppgift i katalogen, och "
-						+ "är därför inte klar med kursen. \nUnderkänd uppgift: " +
-						courseAssignments.get(i).getAssignmentName());
-				break;
-			} else if (assignmentGrade.get(courseAssignments.get(i)) == "G") {
-				coursePoints += 1;
-			} else coursePoints += 2;
-		}
-		return coursePoints;
-	}
-
 
 	public String getStudentName() {
 		return this.studentName;
@@ -67,7 +49,17 @@ public class Student {
 	}
 	
 	public void setAssignmentGrade(Assignment assignemnt, String grade) {
-		this.assignmentGrade.put(assignemnt, grade);
+		for (String s : assignemnt.getGradeList().getListOfGrades()) {
+			if (grade.equals(s)) {
+				this.assignmentGrade.put(assignemnt, grade);
+				break;
+			}
+			else this.assignmentGrade.put(assignemnt, "ERROR");
+		}
+		
+		setChanged();
+		notifyObservers("Observer har noterat att studenten: " + getStudentName() + " har fått betyget: " + this.assignmentGrade.get(assignemnt) +
+				" på uppgift: " + assignemnt.getAssignmentName());
 		
 	}
 }

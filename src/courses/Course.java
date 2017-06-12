@@ -1,7 +1,15 @@
 
-package funksam;
+package courses;
 
-public class Course {
+import java.util.Observable;
+import java.util.Observer;
+
+import assignment.Assignment;
+import assignment.AssignmentCatalog;
+import students.Student;
+import students.StudentCatalog;
+
+public class Course implements Observer{
 	private String courseName;
 	private String courseCode;
 	private double maxPoints;
@@ -15,7 +23,7 @@ public class Course {
 	}
 	
 	public void describeCourse() {
-		System.out.println("Course code: " + this.courseCode + ". Course name: " + this.courseName);
+		System.out.println("Kurskod: " + this.courseCode + ". Kursnamn: " + this.courseName);
 	}
 
 	public String getCourseName() {
@@ -30,11 +38,29 @@ public class Course {
 		return this.maxPoints;
 	}
 	
-	public StudentCatalog getCourseStudentCatalog() {
+	public StudentCatalog getCourseStudents() {
 		return this.courseStudents;
+	}
+	
+	public void setCourseStudents(StudentCatalog studentCatalog) {
+		this.courseStudents = studentCatalog;
 	}
 	
 	public AssignmentCatalog getCourseAssignmentCatalog() {
 		return this.courseAssignments;
+	}
+	public void flush() {
+		for (Student s : getCourseStudents().getStudentList()) {
+			for (Assignment a : getCourseAssignmentCatalog().getAssignmentList()) {
+				s.getCourseAssignments().add(a);
+				s.getAssignmentGrade().put(a, "NONE");
+			}
+			
+		}
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		System.out.println(arg);
 	}
 }

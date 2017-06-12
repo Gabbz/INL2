@@ -1,9 +1,10 @@
-package funksam;
+package students;
 
 import java.util.ArrayList;
 
 public class StudentCatalog {
 	
+	private int size = 0;
 	private ArrayList<Student> studentList = new ArrayList<>();
 	
 	public Student selectStudent(String student) {
@@ -17,6 +18,7 @@ public class StudentCatalog {
 	
 	public void addStudent(Student student) {
 		studentList.add(student);
+		this.size++;
 	}
 	
 	public void getAllStudents() {
@@ -28,5 +30,9 @@ public class StudentCatalog {
 	
 	public ArrayList<Student> getStudentList() {
 		return this.studentList;
+	}
+	
+	public int getSize() {
+		return this.size;
 	}
 }
