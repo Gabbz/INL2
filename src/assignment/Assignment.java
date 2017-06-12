@@ -4,8 +4,6 @@ import grades.GradeList;
 
 public class Assignment {
 	
-	//TEST
-	
 	private String assignmentName;
 	private AssignmentDescription assignmentDescription;
 	private GradeList listOfGrades;
