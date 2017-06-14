@@ -12,6 +12,7 @@ public class Teacher {
 	
 	private static CourseCatalog allCourses = new CourseCatalog();
 	private static Console console = new Console();
+	private static PersistentStorage ps = new PersistentStorage();
 	
 	public static void main(String[] args) throws Exception {	
 		create();
@@ -128,10 +129,6 @@ public class Teacher {
 		//Borttagna pg bd-stöd
 //		Student roykr837 = new Student("roykr837", "Roy Kronemberg");			
 //		Student jonbo488 = new Student("jonbo488", "Jonas Borg");
-		
-		
-		PersistentStorage ps = new PersistentStorage();
-		
 		
 		C725G31.setCourseStudents(ps.getStudents(C725G31.getCourseCode()).get(C725G31.getCourseCode()));
 		C725G80.setCourseStudents(ps.getStudents(C725G80.getCourseCode()).get(C725G80.getCourseCode()));
