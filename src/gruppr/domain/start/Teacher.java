@@ -11,18 +11,15 @@ import gruppr.domain.students.Student;
 public class Teacher {
 	
 	private static CourseCatalog allCourses = new CourseCatalog();
+	private static Console console = new Console();
 	
-	public static void main(String[] args) throws Exception {
-		
+	public static void main(String[] args) throws Exception {	
 		create();
 		init();
 		
 	}
 	
 	public static void init() {
-		
-		Console console = new Console();
-		
 		int exit = 1;
 		while (true) {
 			setGrade(console);
@@ -30,6 +27,7 @@ public class Teacher {
 			if (exit == 0) break;
 		}
 		console.closeScanner();
+		
 	}
 	
 	public static void setGrade(Console console) {
