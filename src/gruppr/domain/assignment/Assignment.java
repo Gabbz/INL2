@@ -1,6 +1,6 @@
-package assignment;
+package gruppr.domain.assignment;
 
-import grades.GradeList;
+import gruppr.domain.grades.GradeList;
 
 public class Assignment {
 	

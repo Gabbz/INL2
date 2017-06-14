@@ -1,11 +1,11 @@
-package students;
+package gruppr.domain.students;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
 
-import assignment.Assignment;
+import gruppr.domain.assignment.Assignment;
 
 public class Student extends Observable{
 	private String studentName;

@@ -1,4 +1,4 @@
-package grades;
+package gruppr.domain.grades;
 
 public class GradeListFactory {
 	

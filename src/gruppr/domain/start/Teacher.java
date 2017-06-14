@@ -1,11 +1,12 @@
-package org.gruppr.ui.start;
+package gruppr.domain.start;
 
-import assignment.Assignment;
-import courses.Course;
-import courses.CourseCatalog;
-import externalSystems.PersistentStorage;
-import grades.GradeList;
-import students.Student;
+import gruppr.domain.assignment.Assignment;
+import gruppr.domain.courses.Course;
+import gruppr.domain.courses.CourseCatalog;
+import gruppr.technical_services.externalSystems.PersistentStorage;
+import gruppr.ui.Console;
+import gruppr.domain.grades.GradeList;
+import gruppr.domain.students.Student;
 
 public class Teacher {
 	
@@ -87,7 +88,7 @@ public class Teacher {
 							break;
 						case "3": gradePoints += 1;
 							break;
-						case "4": gradePoints += 2;
+						case "4": gradePoints += 1.5;
 							break;
 						case "5": gradePoints += 2;
 							break;

@@ -1,11 +1,11 @@
-package externalSystems;
+package gruppr.technical_services.externalSystems;
 
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 
-import students.Student;
-import students.StudentCatalog;
+import gruppr.domain.students.Student;
+import gruppr.domain.students.StudentCatalog;
 
 public class PersistentStorage {
 	

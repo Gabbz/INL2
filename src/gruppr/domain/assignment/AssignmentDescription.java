@@ -1,4 +1,4 @@
-package assignment;
+package gruppr.domain.assignment;
 import java.util.HashMap;
 import java.util.Map;
 

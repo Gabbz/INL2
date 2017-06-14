@@ -1,13 +1,12 @@
-
-package courses;
+package gruppr.domain.courses;
 
 import java.util.Observable;
 import java.util.Observer;
 
-import assignment.Assignment;
-import assignment.AssignmentCatalog;
-import students.Student;
-import students.StudentCatalog;
+import gruppr.domain.assignment.Assignment;
+import gruppr.domain.assignment.AssignmentCatalog;
+import gruppr.domain.students.Student;
+import gruppr.domain.students.StudentCatalog;
 
 public class Course implements Observer{
 	private String courseName;

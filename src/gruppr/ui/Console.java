@@ -1,11 +1,11 @@
-package org.gruppr.ui.start;
+package gruppr.ui;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import assignment.Assignment;
-import courses.Course;
-import students.Student;
+import gruppr.domain.assignment.Assignment;
+import gruppr.domain.courses.Course;
+import gruppr.domain.students.Student;
 
 public class Console {
 	

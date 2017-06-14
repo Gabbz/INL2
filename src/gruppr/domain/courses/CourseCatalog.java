@@ -1,4 +1,4 @@
-package courses;
+package gruppr.domain.courses;
 
 import java.util.ArrayList;
 
