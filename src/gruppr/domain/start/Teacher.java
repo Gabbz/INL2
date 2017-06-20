@@ -4,23 +4,17 @@ import gruppr.domain.assignment.Assignment;
 import gruppr.domain.courses.Course;
 import gruppr.domain.courses.CourseCatalog;
 import gruppr.technical_services.externalSystems.PersistentStorage;
-import gruppr.ui.Console;
+import gruppr.ui.console.Console;
 import gruppr.domain.grades.GradeList;
 import gruppr.domain.students.Student;
+import gruppr.domain.students.StudentCatalog;
 
 public class Teacher {
 	
-	private static CourseCatalog allCourses = new CourseCatalog();
-	private static Console console = new Console();
-	private static PersistentStorage ps = new PersistentStorage();
+	private CourseCatalog allCourses = new CourseCatalog();
+	private PersistentStorage ps = new PersistentStorage();
 	
-	public static void main(String[] args) throws Exception {	
-		create();
-		init();
-		
-	}
-	
-	public static void init() {
+	public void init(Console console) {
 		int exit = 1;
 		while (true) {
 			setGrade(console);
@@ -31,7 +25,7 @@ public class Teacher {
 		
 	}
 	
-	public static void setGrade(Console console) {
+	public void setGrade(Console console) {
 		
 		//KURS
 		allCourses.getCourses();
@@ -71,7 +65,7 @@ public class Teacher {
 		} else console.coursErr();
 	}
 	
-	public static void checkCourseCompletion(Course selectedCourse, Student selectedStudent, Assignment selectedAssignment, Console console) {
+	public void checkCourseCompletion(Course selectedCourse, Student selectedStudent, Assignment selectedAssignment, Console console) {
 		int gradePoints = 0;
 		loop: for (Assignment a : selectedStudent.getCourseAssignments()) {
 			for (int i = 0; i < selectedCourse.getCourseAssignmentCatalog().getAssignmentList().size(); i++) {
@@ -105,7 +99,7 @@ public class Teacher {
 	//ALLT UNDER DEN HÄR LINJEN ÄR ENBART FÖR ATT VISA ATT KODEN FUNGERAR MED SIMULERAD TESTDATA.
 	//-------------------------------------------------------------------------------------------
 	
-	public static void create() throws Exception {
+	public void create() throws Exception {
 		
 		Course C725G31 = new Course("Java", "725G31", 3.0);					//DUMMIES FÖR INL4, GÖRS EGENTLIGEN I EGET ANVÄNDNINGSFALL OCH KLASS
 		Course C725G80 = new Course("Affärssystem", "725G80", 4.0);
@@ -130,8 +124,10 @@ public class Teacher {
 //		Student roykr837 = new Student("roykr837", "Roy Kronemberg");			
 //		Student jonbo488 = new Student("jonbo488", "Jonas Borg");
 		
-		C725G31.setCourseStudents(ps.getStudents(C725G31.getCourseCode()).get(C725G31.getCourseCode()));
-		C725G80.setCourseStudents(ps.getStudents(C725G80.getCourseCode()).get(C725G80.getCourseCode()));
+		StudentCatalog studentCat1 =  new StudentCatalog(ps.getStudents(C725G31.getCourseCode()).get(C725G31.getCourseCode()));
+		C725G31.setCourseStudents(studentCat1);
+		studentCat1 =  new StudentCatalog(ps.getStudents(C725G80.getCourseCode()).get(C725G80.getCourseCode()));
+		C725G80.setCourseStudents(studentCat1);
 		
 		//Borttagna pga db-stöd
 //		C725G31.getCourseStudents().addStudent(jonbo488);
@@ -145,7 +141,7 @@ public class Teacher {
 		
 	}
 	
-	public static String createAssignmentDescription(int moment) {
+	public String createAssignmentDescription(int moment) {
 		String moment1, moment2, moment3, moment4;
 		String returnmoment = null;
 		

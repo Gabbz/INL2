@@ -6,8 +6,9 @@ import java.util.Map;
 import java.util.Observable;
 
 import gruppr.domain.assignment.Assignment;
+import gruppr.technical_services.externalSystems.StudentDTO;
 
-public class Student extends Observable{
+public class Student extends Observable {
 	private String studentName;
 	private String liuID;
 	private ArrayList<Assignment> courseAssignments = new ArrayList<>();
@@ -18,6 +19,10 @@ public class Student extends Observable{
 		this.liuID = liuID;
 	}
 	
+	public Student(StudentDTO dto) {
+		this(dto.getLiuID(), dto.getStudentName());
+	}
+
 	public Assignment selectAssignment(String assignment) {
 		for (Assignment a : this.courseAssignments) {
 			if(a.getAssignmentName() != null && a.getAssignmentName().equals(assignment)) {

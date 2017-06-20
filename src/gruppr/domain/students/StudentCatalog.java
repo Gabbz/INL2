@@ -2,11 +2,21 @@ package gruppr.domain.students;
 
 import java.util.ArrayList;
 
+import gruppr.technical_services.externalSystems.StudentDTO;
+
 public class StudentCatalog {
 	
 	private int size = 0;
 	private ArrayList<Student> studentList = new ArrayList<>();
 	
+	public StudentCatalog(){}
+	
+	public StudentCatalog(ArrayList<StudentDTO> arrayList) {
+		for (StudentDTO dto : arrayList) {
+			studentList.add(new Student(dto));
+		}
+	}
+
 	public Student selectStudent(String student) {
 		for (Student s : this.studentList) {
 			if(s.getLiuID() != null && s.getLiuID().equals(student)) {

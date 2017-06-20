@@ -1,15 +1,23 @@
-package gruppr.ui;
+package gruppr.ui.console;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import gruppr.domain.assignment.Assignment;
 import gruppr.domain.courses.Course;
+import gruppr.domain.start.Teacher;
 import gruppr.domain.students.Student;
 
 public class Console {
 	
 	private Scanner scanner;
+	private Teacher teacher = new Teacher();
+	
+	public void main(String[] args) throws Exception {	
+		teacher.create();
+		teacher.init(this);
+		
+	}
 
 	public Console() {
 		this.scanner = new Scanner(System.in);
